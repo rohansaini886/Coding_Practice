@@ -1,24 +1,19 @@
-def binarySearch(arr, l, r, x):
- 
-    # Check base case
-    if r >= l:
- 
-        mid = l + (r - l) // 2
- 
-        # If element is present at the middle itself
-        if arr[mid] == x:
-            return mid
- 
-        # If element is smaller than mid, then it
-        # can only be present in left subarray
-        elif arr[mid] > x:
-            return binarySearch(arr, l, mid-1, x)
- 
-        # Else the element can only be present
-        # in right subarray
-        else:
-            return binarySearch(arr, mid + 1, r, x)
- 
-    else:
-        # Element is not present in the array
-        return -1
+import math
+def prime_product(n):
+    primes = []
+    for i in range(2, n + 1):
+        temp = []
+        for j in range(2, i + 1):
+            #print(i, j)
+            if i % j == 0:
+                temp.append(j)
+        if len(temp) == 1:
+            primes.append(i)
+    #print(primes)
+    for prime in primes:
+        for prime_ in primes:
+            if prime * prime_ == n:
+                return True
+    return False
+n = int(input())
+print(prime_product(n))
